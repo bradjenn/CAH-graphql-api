@@ -1,0 +1,33 @@
+{
+  "name": "CAH-graphql-api",
+  "version": "1.0.0",
+  "description": "You can use the [editor on GitHub](https://github.com/bradjenn/CAH-graphql-api/edit/master/README.md) to maintain and preview the content for your website in Markdown files.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon",
+    "bundle": "cpx src/**/* functions/bundle"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bradjenn/CAH-graphql-api.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bradjenn/CAH-graphql-api/issues"
+  },
+  "homepage": "https://github.com/bradjenn/CAH-graphql-api#readme",
+  "dependencies": {
+    "apollo-server": "^2.17.0",
+    "apollo-server-lambda": "^2.17.0",
+    "graphql": "^15.3.0",
+    "uuid": "^8.3.0"
+  },
+  "devDependencies": {
+    "cpx": "^1.5.0",
+    "nodemon": "^2.0.4",
+    "prettier": "2.1.1"
+  }
+}
