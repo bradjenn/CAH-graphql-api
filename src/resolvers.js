@@ -1,34 +1,4 @@
 const data = require("./data.json")
-// const fs = require("fs")
-// const { v4: uuidv4 } = require("uuid")
-
-// const updateJSON = () => {
-//   var complete = false
-//   var m = JSON.parse(fs.readFileSync("./data.json").toString())
-
-//   // m.whiteCards = m.whiteCards.map((c) => {
-//   //   return { text: c }
-//   // })
-
-//   m.packs.forEach((pack) => {
-//     pack.white = pack.white.map((index) => {
-//       return m.whiteCards[index].id
-//     })
-
-//     pack.black = pack.black.map((index) => {
-//       return m.blackCards[index].id
-//     })
-//   })
-
-//   if (!complete) {
-//     fs.writeFile("./data.json", JSON.stringify(m), (err, result) => {
-//       complete = true
-//       if (err) {
-//         console.log("error", err)
-//       }
-//     })
-//   }
-// }
 
 const resolvers = {
   Query: {
