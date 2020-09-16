@@ -1,6 +1,8 @@
+const { PrismaClient } = require("@prisma/client")
 const ApolloServer = require("apollo-server").ApolloServer
 const ApolloServerLambda = require("apollo-server-lambda").ApolloServer
 
+const prisma = new PrismaClient()
 const typeDefs = require("./schema")
 const resolvers = require("./resolvers")
 
@@ -9,6 +11,9 @@ const serverOptions = {
   resolvers,
   introspection: true,
   playground: true,
+  context: {
+    prisma,
+  },
 }
 
 function createLambdaServer() {
