@@ -11,17 +11,17 @@ const resolvers = {
     },
     blackCard: async (parent, args, context) => {
       return context.prisma.blackCards.findOne({
-        where: { id: args.id },
+        where: { id: parseInt(args.id, 10) },
       })
     },
     whiteCard: async (parent, args, context) => {
       return context.prisma.whiteCards.findOne({
-        where: { id: args.id },
+        where: { id: parseInt(args.id, 10) },
       })
     },
     pack: async (parent, args, context) => {
       return context.prisma.packs.findOne({
-        where: { id: args.id },
+        where: { id: parseInt(args.id, 10) },
       })
     },
   },
@@ -43,14 +43,14 @@ const resolvers = {
     blackCards(parent, args, context) {
       return context.prisma.packs
         .findOne({
-          where: { id: args.id },
+          where: { id: parent.id },
         })
         .blackCards()
     },
     whiteCards(parent, args, context) {
       return context.prisma.packs
         .findOne({
-          where: { id: args.id },
+          where: { id: parent.id },
         })
         .whiteCards()
     },

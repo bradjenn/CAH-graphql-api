@@ -17,14 +17,15 @@ const typeDefs = gql`
   type Pack {
     id: ID!
     name: String
-    black: [BlackCard]!
-    white: [WhiteCard]!
+    blackCards: [BlackCard]!
+    whiteCards: [WhiteCard]!
   }
 
   type Query {
     blackCards: [BlackCard]!
     blackCard(id: ID!): BlackCard
-    whiteCard(id: ID!): String
+    whiteCards: [WhiteCard]!
+    whiteCard(id: ID!): WhiteCard
     packs: [Pack]!
     pack(id: ID!): Pack
   }
