@@ -1,4 +1,13 @@
 const resolvers = {
+  Mutation: {
+    createPack: async (parent, args, context, info) => {
+      const newPack = await context.prisma.packs.create({
+        data: args.data,
+      })
+
+      return { pack: newPack }
+    },
+  },
   Query: {
     whiteCards: async (parent, args, context) => {
       return context.prisma.whiteCards.findMany()
