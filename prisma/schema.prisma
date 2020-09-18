@@ -2,7 +2,7 @@ generator client {
   provider = "prisma-client-js"
 }
 
-///
+/// 
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -10,11 +10,11 @@ datasource db {
 
 model BlackCards {
   id        Int      @default(autoincrement()) @id
-  text      String?
-  pick      Int
+  text      String
+  pick      String
   createdAt DateTime @default(now())
-  packId    Int
-  pack      Packs    @relation(fields: [packId], references: [id])
+  packId    Int?
+  pack      Packs?   @relation(fields: [packId], references: [id])
 }
 
 model Packs {
@@ -26,8 +26,8 @@ model Packs {
 
 model WhiteCards {
   id        Int      @default(autoincrement()) @id
-  text      String?
+  text      String
   createdAt DateTime @default(now())
-  packId    Int
-  pack      Packs    @relation(fields: [packId], references: [id])
+  packId    Int?
+  pack      Packs?   @relation(fields: [packId], references: [id])
 }

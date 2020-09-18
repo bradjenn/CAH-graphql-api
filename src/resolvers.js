@@ -5,7 +5,14 @@ const resolvers = {
         data: args.data,
       })
 
-      return { pack: newPack }
+      return newPack
+    },
+    deletePack: async (parent, args, context) => {
+      const deletedPack = await context.prisma.packs.delete({
+        where: { id: parseInt(args.where.id, 10) },
+      })
+
+      return deletedPack
     },
   },
   Query: {

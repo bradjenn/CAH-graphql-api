@@ -10,29 +10,29 @@ const typeDefs = gql`
   type BlackCard {
     id: ID!
     text: String!
-    pick: Int!
+    pick: String!
     pack: Pack!
   }
 
   type Pack {
     id: ID!
     name: String!
-    blackCards: [BlackCard]!
-    whiteCards: [WhiteCard]!
+    blackCards: [BlackCard!]
+    whiteCards: [WhiteCard!]
   }
 
   type Query {
-    blackCards: [BlackCard]!
+    blackCards: [BlackCard!]
     blackCard(id: ID!): BlackCard
-    whiteCards: [WhiteCard]!
+    whiteCards: [WhiteCard!]
     whiteCard(id: ID!): WhiteCard
-    packs: [Pack]!
+    packs: [Pack!]
     pack(id: ID!): Pack
   }
 
   input BlackCardsCreateWithoutPackInput {
     text: String!
-    pick: Int!
+    pick: String!
   }
 
   input BlackCardsCreateManyWithoutPackInput {
@@ -45,7 +45,7 @@ const typeDefs = gql`
   }
 
   input WhiteCardsCreateManyWithoutPackInput {
-    create: [WhiteCardsCreateWithoutPackInput]
+    create: [WhiteCardsCreateWithoutPackInput!]
     connect: [WhiteCardsWhereUniqueInput!]
   }
 
@@ -63,12 +63,13 @@ const typeDefs = gql`
     whiteCards: WhiteCardsCreateManyWithoutPackInput
   }
 
-  type Mutation {
-    createPack(data: CreatePackInput!): CreatePackPayload
+  input PackWhereUniqueInput {
+    id: ID
   }
 
-  type CreatePackPayload {
-    pack: Pack
+  type Mutation {
+    createPack(data: CreatePackInput!): Pack
+    deletePack(where: PackWhereUniqueInput!): Pack
   }
 
   schema {
