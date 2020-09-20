@@ -1,0 +1,80 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateField",
+      "model": "Packs",
+      "field": "approvedBy",
+      "type": "Users",
+      "arity": "Optional"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Packs",
+          "field": "approvedBy"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Packs",
+          "field": "approvedBy"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[approvedById]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "Packs",
+          "field": "approvedBy"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Packs",
+      "field": "approvedById",
+      "type": "Int",
+      "arity": "Optional"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Packs",
+      "field": "addedBy"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Packs",
+      "field": "addedById"
+    },
+    {
+      "tag": "CreateField",
+      "model": "Users",
+      "field": "approvedPacks",
+      "type": "Packs",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteField",
+      "model": "Users",
+      "field": "Packs"
+    }
+  ]
+}

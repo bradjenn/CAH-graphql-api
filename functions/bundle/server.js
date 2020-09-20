@@ -11,8 +11,11 @@ const serverOptions = {
   resolvers,
   introspection: true,
   playground: true,
-  context: {
-    prisma,
+  context: (request) => {
+    return {
+      ...request,
+      prisma,
+    }
   },
 }
 

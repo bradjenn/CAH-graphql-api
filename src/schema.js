@@ -17,8 +17,23 @@ const typeDefs = gql`
   type Pack {
     id: ID!
     name: String!
+    official: Boolean!
+    status: String
+    approvedBy: User
     blackCards: [BlackCard!]
     whiteCards: [WhiteCard!]
+  }
+
+  type User {
+    id: ID!
+    name: String!
+    email: String!
+    approvedPacks: [Pack!]
+  }
+
+  type AuthPayload {
+    token: String
+    user: User
   }
 
   type Query {
@@ -59,6 +74,7 @@ const typeDefs = gql`
 
   input CreatePackInput {
     name: String!
+    official: Boolean!
     blackCards: BlackCardsCreateManyWithoutPackInput
     whiteCards: WhiteCardsCreateManyWithoutPackInput
   }
@@ -70,6 +86,8 @@ const typeDefs = gql`
   type Mutation {
     createPack(data: CreatePackInput!): Pack
     deletePack(where: PackWhereUniqueInput!): Pack
+    signup(email: String!, password: String!, name: String!): AuthPayload
+    login(email: String!, password: String!): AuthPayload
   }
 
   schema {

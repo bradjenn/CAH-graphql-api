@@ -1,0 +1,4 @@
+# Prisma Migrate lockfile v1
+
+20200919213028-add-user-model
+20200919222040-change-user-pack-relation
