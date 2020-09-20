@@ -50,6 +50,14 @@ async function createPack(parent, args, context, info) {
 async function deletePack(parent, args, context) {
   const userId = getUserId(context)
 
+  const pack = await context.prisma.packs.findOne({
+    where: { id: parseInt(args.where.id, 10) },
+  })
+
+  if (!pack) {
+    throw new Error("Pack does not exist")
+  }
+
   const deletedPack = await context.prisma.packs.delete({
     where: { id: parseInt(args.where.id, 10) },
   })
