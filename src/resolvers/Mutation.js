@@ -39,7 +39,7 @@ async function login(parent, args, context) {
 async function createPack(parent, args, context, info) {
   const newPack = await context.prisma.packs.create({
     data: {
-      ...args.data,
+      ...args.input,
       status: "pending",
     },
   })

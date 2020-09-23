@@ -75,6 +75,7 @@ const typeDefs = gql`
   input CreatePackInput {
     name: String!
     official: Boolean!
+    status: String
     blackCards: BlackCardsCreateManyWithoutPackInput
     whiteCards: WhiteCardsCreateManyWithoutPackInput
   }
@@ -84,7 +85,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    createPack(data: CreatePackInput!): Pack
+    createPack(input: CreatePackInput!): Pack
     deletePack(where: PackWhereUniqueInput!): Pack
     signup(email: String!, password: String!, name: String!): AuthPayload
     login(email: String!, password: String!): AuthPayload
